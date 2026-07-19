@@ -1,0 +1,226 @@
+{
+  "stage": "drawable_path_plan_mvp",
+  "input": "<FIXTURE_ROOT>/dedupe_overlap.png",
+  "method": {
+    "binarization": "otsu",
+    "threshold": 1,
+    "inverted": false,
+    "centerline": "zhang_suen_thinning",
+    "stroke_postprocess": {
+      "drop_short_stroke_mm": 0.35,
+      "merge_endpoint_distance_mm": 0.45,
+      "merge_angle_deg": 35.0,
+      "dedupe_short_path_length_mm": 2.0,
+      "dedupe_distance_mm": 0.3,
+      "dedupe_angle_deg": 25.0,
+      "dedupe_overlap_ratio": 0.65
+    },
+    "fill": "serpentine_boustrophedon_from_black_runs",
+    "routing": "nearest_neighbor_estimate_only"
+  },
+  "canvas": {
+    "width_mm": 120.0,
+    "height_mm": 120.0,
+    "draw_width_mm": 120.0,
+    "draw_height_mm": 15.0,
+    "offset_x_mm": 0.0,
+    "offset_y_mm": 52.5,
+    "mm_per_px": 0.117188,
+    "pen_width_mm": 0.5,
+    "min_gap_mm": 0.8
+  },
+  "stroke_paths": [
+    {
+      "id": "stroke_0001",
+      "source": "centerline",
+      "points_mm": [
+        [
+          2.8125,
+          60.0
+        ],
+        [
+          117.1875,
+          60.0
+        ]
+      ],
+      "length_mm": 114.375
+    }
+  ],
+  "preview_centerline_paths": [
+    {
+      "id": "centerline_base_0001",
+      "source": "skeleton_continuous_base",
+      "points_mm": [
+        [
+          2.8125,
+          60.0
+        ],
+        [
+          117.1875,
+          60.0
+        ],
+        [
+          2.8125,
+          60.0
+        ]
+      ],
+      "length_mm": 228.75
+    },
+    {
+      "id": "centerline_base_0002",
+      "source": "skeleton_continuous_base",
+      "points_mm": [
+        [
+          56.25,
+          60.2344
+        ],
+        [
+          57.4219,
+          60.2344
+        ],
+        [
+          56.25,
+          60.2344
+        ]
+      ],
+      "length_mm": 2.3438
+    }
+  ],
+  "centerline_base_paths": [
+    {
+      "id": "centerline_base_0001",
+      "source": "skeleton_continuous_base",
+      "points_mm": [
+        [
+          2.8125,
+          60.0
+        ],
+        [
+          117.1875,
+          60.0
+        ],
+        [
+          2.8125,
+          60.0
+        ]
+      ],
+      "length_mm": 228.75
+    },
+    {
+      "id": "centerline_base_0002",
+      "source": "skeleton_continuous_base",
+      "points_mm": [
+        [
+          56.25,
+          60.2344
+        ],
+        [
+          57.4219,
+          60.2344
+        ],
+        [
+          56.25,
+          60.2344
+        ]
+      ],
+      "length_mm": 2.3438
+    }
+  ],
+  "fill_paths": [],
+  "fill_boundary_paths": [],
+  "fill_regions": [],
+  "regions": [
+    {
+      "id": "component_0001",
+      "classification": "stroke_candidate",
+      "area_px": 977,
+      "area_mm2": 13.4171,
+      "bbox_px": [
+        24,
+        64,
+        1000,
+        64
+      ],
+      "bbox_mm": [
+        114.492,
+        0.117
+      ],
+      "skeleton_pixels": 977,
+      "estimated_avg_width_mm": 0.117
+    },
+    {
+      "id": "component_0002",
+      "classification": "stroke_candidate",
+      "area_px": 11,
+      "area_mm2": 0.1511,
+      "bbox_px": [
+        480,
+        66,
+        490,
+        66
+      ],
+      "bbox_mm": [
+        1.289,
+        0.117
+      ],
+      "skeleton_pixels": 11,
+      "estimated_avg_width_mm": 0.117
+    }
+  ],
+  "metrics": {
+    "source_size_px": [
+      1024,
+      128
+    ],
+    "foreground_pixels": 988,
+    "skeleton_pixels": 988,
+    "stroke_path_count": 1,
+    "preview_centerline_path_count": 2,
+    "centerline_base_path_count": 2,
+    "raw_stroke_path_count": 2,
+    "dropped_short_stroke_count": 0,
+    "merged_stroke_pair_count": 0,
+    "deduped_short_stroke_count": 1,
+    "deduped_short_stroke_length_mm": 1.172,
+    "fill_path_count": 0,
+    "fill_boundary_path_count": 0,
+    "fill_region_count": 0,
+    "preview_centerline_length_mm": 231.094,
+    "centerline_base_length_mm": 231.094,
+    "stroke_length_mm": 114.375,
+    "fill_length_mm": 0,
+    "fill_boundary_length_mm": 0,
+    "preview_draw_length_mm": 231.094,
+    "draw_length_mm": 114.375,
+    "estimated_pen_up_travel_mm": 60.066
+  },
+  "gcode_policy": {
+    "status": "not_generated_by_path_plan_script",
+    "pen_lift": "z_axis",
+    "default_pen_up_z": 5.0,
+    "default_pen_down_z": 0.0,
+    "source_for_gcode": "path_plan.json"
+  },
+  "checks": [
+    {
+      "severity": "INFO",
+      "code": "z_axis_pen_lift",
+      "message": "Future G-code generation should use Z-axis pen up/down commands."
+    },
+    {
+      "severity": "INFO",
+      "code": "path_plan_generated",
+      "message": "Path plan generated for visual review."
+    }
+  ],
+  "artifacts": {
+    "path_plan": "<FIXTURE_ROOT>/expected/plans/dedupe_overlap/path_plan.json",
+    "binary_png": "<FIXTURE_ROOT>/expected/plans/dedupe_overlap/binary.png",
+    "skeleton_debug_png": "<FIXTURE_ROOT>/expected/plans/dedupe_overlap/skeleton_debug.png",
+    "preview_stroke_only_svg": "<FIXTURE_ROOT>/expected/plans/dedupe_overlap/preview_stroke_only.svg",
+    "preview_centerline_only_svg": "<FIXTURE_ROOT>/expected/plans/dedupe_overlap/preview_centerline_only.svg",
+    "preview_layers_svg": "<FIXTURE_ROOT>/expected/plans/dedupe_overlap/preview_layers.svg",
+    "preview_final_svg": "<FIXTURE_ROOT>/expected/plans/dedupe_overlap/preview_final.svg",
+    "report_md": "<FIXTURE_ROOT>/expected/plans/dedupe_overlap/report.md"
+  }
+}

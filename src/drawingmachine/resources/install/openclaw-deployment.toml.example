@@ -1,0 +1,32 @@
+# registry_root is read-only. managed_root is a distinct service-writable tree.
+# Every managed ancestor is service/admin-owned and client-nonwritable.
+# Managed directories are service-owned, automation-read-group, setgid 2750.
+# Managed files are service-owned, inherited automation-read group, mode 0640.
+# registry_owner is the admin principal that owns the registry root and its ancestry.
+schema_version = 1
+registry_root = "@OPENCLAW_REGISTRY_ROOT@"
+managed_root = "@OPENCLAW_MANAGED_ROOT@"
+managed_dir_mode = 1512 # 0o2750
+target_mode = 416 # 0o0640
+manifest_sha256 = "@OPENCLAW_MANIFEST_SHA256@"
+registry_policy_sha256 = "@OPENCLAW_REGISTRY_POLICY_SHA256@"
+
+[operator_principal]
+uid = @OPERATOR_UID@
+gid = @OPERATOR_GID@
+
+[automation_principal]
+uid = @AUTOMATION_UID@
+gid = @AUTOMATION_GID@
+
+[automation_read_group]
+name = "drawingmachine-automation-read"
+gid = @AUTOMATION_READ_GID@
+
+[managed_owner]
+uid = @SERVICE_UID@
+gid = @SERVICE_GID@
+
+[registry_owner]
+uid = @REGISTRY_OWNER_UID@
+gid = @REGISTRY_OWNER_GID@

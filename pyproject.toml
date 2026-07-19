@@ -1,0 +1,65 @@
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drawingmachine"
+version = "0.2.0.dev0"
+description = "Local drawing-machine workflow and FluidNC control service"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+dependencies = ["Pillow>=10,<13", "pyserial>=3.5,<4"]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1,<2",
+  "import-linter>=2,<3",
+  "mypy>=1.11,<2",
+  "pytest>=8,<9",
+  "pytest-cov>=5,<7",
+  "ruff>=0.5,<1",
+]
+
+[project.scripts]
+drawingmachine = "drawingmachine.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+drawingmachine = ["py.typed", "adapters/persistence/migrations/*.sql"]
+"drawingmachine.resources.openclaw" = ["manifest.json", "registry-policy.json", "agents/*/*.md"]
+"drawingmachine.resources.systemd" = ["*.service"]
+"drawingmachine.resources.install" = ["manifest.json", "*.example", "config/**/*.example"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-config --strict-markers"
+markers = ["safety: machine and G-code safety contract"]
+
+[tool.coverage.run]
+source = ["drawingmachine"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+
+[tool.mypy]
+python_version = "3.11"
+mypy_path = "src"
+files = ["src/drawingmachine"]
+strict = true
+warn_unreachable = true
+disallow_any_unimported = true

@@ -1,0 +1,1 @@
+"""Pure drawingmachine domain contracts."""

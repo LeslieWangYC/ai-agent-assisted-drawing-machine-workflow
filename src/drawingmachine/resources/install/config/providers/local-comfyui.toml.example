@@ -1,0 +1,23 @@
+schema_version = 1
+[profile]
+name = "local-comfyui"
+endpoint = "http://127.0.0.1:8188"
+workflow_template = "local-comfyui-workflow.json"
+model_family = "qwen-image-edit-2511"
+scale_to_length = 576
+timeout_seconds = 240.0
+poll_interval_seconds = 2.0
+free_after_run = false
+live_execution_requires_execute_flag = true
+
+[profile.workflow_nodes]
+load_image = "25"
+prompt = "27"
+sampler = "28"
+save_image = "18"
+scale = "221"
+
+[profile.sampler_defaults]
+steps = 20
+cfg = 4.0
+denoise = 0.7

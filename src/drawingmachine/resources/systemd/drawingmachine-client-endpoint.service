@@ -1,0 +1,19 @@
+[Unit]
+Description=Rebuild the private Drawingmachine client endpoint
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=%h/.local/lib/drawingmachine/venv/bin/python -m drawingmachine.install.client_endpoint runtime --policy /home/drawingmachine-service/.config/drawingmachine/service-access.toml --expected-policy-sha256 @SERVICE_ACCESS_SHA256@
+UMask=0077
+RuntimeDirectory=drawingmachine
+RuntimeDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadOnlyPaths=/home/drawingmachine-service/.config/drawingmachine/service-access.toml
+ReadWritePaths=%t/drawingmachine
+
+[Install]
+WantedBy=default.target

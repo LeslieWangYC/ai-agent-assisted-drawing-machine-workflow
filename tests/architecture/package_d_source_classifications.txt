@@ -1,0 +1,67 @@
+# source|kind|manifested owner|source-supported reason
+src/drawingmachine/__init__.py|pure-data|src/drawingmachine/service/runtime.py|empty root namespace marker with no executable definitions or imports
+src/drawingmachine/__main__.py|delegate|src/drawingmachine/service/runtime.py|module entrypoint only invokes the CLI main composition path
+src/drawingmachine/adapters/__init__.py|pure-data|src/drawingmachine/service/runtime.py|empty adapters namespace marker with no executable definitions or imports
+src/drawingmachine/adapters/filesystem/__init__.py|delegate|src/drawingmachine/adapters/filesystem/artifact_store.py|namespace only re-exports filesystem adapter implementations without adding behavior
+src/drawingmachine/adapters/filesystem/hashing.py|pure-data|src/drawingmachine/adapters/filesystem/artifact_store.py|deterministic streaming digest helper; artifact store owns validation and secure publication
+src/drawingmachine/adapters/hardware/__init__.py|pure-data|src/drawingmachine/application/machine/execution.py|empty hardware namespace marker; execution chain owns hardware effect selection
+src/drawingmachine/adapters/persistence/__init__.py|delegate|src/drawingmachine/adapters/persistence/sqlite_repository.py|namespace only re-exports migration and repository implementations
+src/drawingmachine/adapters/persistence/migrations/__init__.py|pure-data|src/drawingmachine/adapters/persistence/sqlite_repository.py|empty migration-resource namespace; repository owns schema application and durable state
+src/drawingmachine/adapters/providers/__init__.py|delegate|src/drawingmachine/application/offline_job_chain.py|namespace only re-exports provider implementation and configuration
+src/drawingmachine/adapters/system/__init__.py|pure-data|src/drawingmachine/service/runtime.py|empty system-adapter namespace; runtime consumes system services
+src/drawingmachine/adapters/workers/__init__.py|delegate|src/drawingmachine/application/offline_job_chain.py|namespace only re-exports process execution mechanics selected by the offline chain
+src/drawingmachine/application/__init__.py|delegate|src/drawingmachine/service/runtime.py|namespace only re-exports application use cases without adding admission or effects
+src/drawingmachine/application/gcode/__init__.py|delegate|src/drawingmachine/domain/gcode/candidate.py|namespace only re-exports the canonical candidate checker
+src/drawingmachine/application/gcode/check_candidate.py|delegate|src/drawingmachine/domain/gcode/candidate.py|compatibility module only re-exports CandidateCheckResult and check_candidate
+src/drawingmachine/application/machine/__init__.py|delegate|src/drawingmachine/application/machine/execution.py|namespace only re-exports machine commands and execution authority
+src/drawingmachine/cli/__init__.py|delegate|src/drawingmachine/service/runtime.py|namespace only re-exports CLI composition and render functions
+src/drawingmachine/cli/machine.py|delegate|src/drawingmachine/service/machine_protocol.py|builds request envelopes and calls the client; service protocol independently validates approval mode and executes authority
+src/drawingmachine/cli/openclaw.py|delegate|src/drawingmachine/service/openclaw_protocol.py|performs an early canonical-root check, while service protocol repeats the check and alone authorizes deployment effects
+src/drawingmachine/cli/parser.py|delegate|src/drawingmachine/service/dispatcher.py|binds local argparse handlers and choices; service dispatcher owns command registration and request failure mapping
+src/drawingmachine/cli/render.py|pure-data|src/drawingmachine/service/machine_protocol.py|validates response shape for truthful text only and cannot admit or execute a machine command
+src/drawingmachine/config/__init__.py|delegate|src/drawingmachine/service/runtime.py|namespace only re-exports dedicated configuration owners consumed by runtime
+src/drawingmachine/config/models.py|pure-data|src/drawingmachine/config/machine.py|configuration DTOs and enum only; machine parser owns semantic validation
+src/drawingmachine/domain/__init__.py|pure-data|src/drawingmachine/service/runtime.py|empty domain namespace marker with no executable definitions or imports
+src/drawingmachine/domain/fluidnc/__init__.py|delegate|src/drawingmachine/ports/fluidnc.py|namespace only re-exports separately manifested FluidNC gates parsers and port contracts
+src/drawingmachine/domain/gcode/__init__.py|delegate|src/drawingmachine/domain/gcode/candidate.py|namespace only re-exports separately manifested G-code authorities
+src/drawingmachine/domain/jobs/__init__.py|delegate|src/drawingmachine/domain/jobs/models.py|namespace only re-exports job DTO and transition authorities
+src/drawingmachine/domain/machine/__init__.py|delegate|src/drawingmachine/application/machine/execution.py|namespace only re-exports separately manifested approval state and execution authorities
+src/drawingmachine/domain/openclaw/__init__.py|delegate|src/drawingmachine/application/openclaw.py|namespace only re-exports OpenClaw result and error data consumed by deployment authority
+src/drawingmachine/domain/planning/__init__.py|delegate|src/drawingmachine/domain/planning/service.py|namespace only re-exports planning data and the manifested planning service
+src/drawingmachine/domain/planning/experiments/__init__.py|pure-data|src/drawingmachine/domain/planning/service.py|empty non-default experiment namespace; production planning service never imports it
+src/drawingmachine/domain/planning/experiments/graph_clean.py|pure-data|src/drawingmachine/domain/planning/service.py|nonproduction experimental geometry module not imported by the manifested production planning service
+src/drawingmachine/domain/planning/fills/__init__.py|delegate|src/drawingmachine/domain/planning/service.py|namespace only re-exports deterministic fill helpers called by planning service
+src/drawingmachine/domain/planning/fills/boundaries.py|delegate|src/drawingmachine/domain/planning/service.py|deterministic boundary geometry called by planning service before it classifies plan checks
+src/drawingmachine/domain/planning/fills/hatch.py|delegate|src/drawingmachine/domain/planning/service.py|deterministic hatch geometry called by planning service before it classifies plan checks
+src/drawingmachine/domain/planning/fills/regions.py|delegate|src/drawingmachine/domain/planning/service.py|deterministic region statistics called by planning service before it classifies plan checks
+src/drawingmachine/domain/planning/geometry/__init__.py|delegate|src/drawingmachine/domain/planning/service.py|namespace only re-exports deterministic geometry helpers called by planning service
+src/drawingmachine/domain/planning/geometry/distance.py|pure-data|src/drawingmachine/domain/planning/service.py|pure distance calculations with no state or effects; planning service owns resulting plan decisions
+src/drawingmachine/domain/planning/geometry/simplify.py|pure-data|src/drawingmachine/domain/planning/service.py|pure polyline simplification with no state or effects; planning service owns resulting plan decisions
+src/drawingmachine/domain/planning/geometry/transform.py|pure-data|src/drawingmachine/domain/planning/service.py|pure coordinate transforms with no state or effects; planning service owns resulting plan decisions
+src/drawingmachine/domain/planning/imaging/__init__.py|delegate|src/drawingmachine/domain/planning/service.py|namespace only re-exports deterministic imaging helpers called by planning service
+src/drawingmachine/domain/planning/imaging/binarization.py|delegate|src/drawingmachine/domain/planning/service.py|deterministic image binarization called by planning service before it classifies plan checks
+src/drawingmachine/domain/planning/imaging/components.py|delegate|src/drawingmachine/domain/planning/service.py|deterministic component extraction called by planning service before it classifies plan checks
+src/drawingmachine/domain/planning/imaging/thinning.py|delegate|src/drawingmachine/domain/planning/service.py|deterministic thinning called by planning service before it classifies plan checks
+src/drawingmachine/domain/planning/outputs/__init__.py|delegate|src/drawingmachine/domain/planning/service.py|namespace only re-exports deterministic rendering of the planning service result
+src/drawingmachine/domain/planning/outputs/artifacts.py|delegate|src/drawingmachine/domain/planning/service.py|renders bytes from an existing planning result and cannot admit or publish the artifact
+src/drawingmachine/domain/planning/outputs/reports.py|pure-data|src/drawingmachine/domain/planning/service.py|deterministic report projection of an existing planning result
+src/drawingmachine/domain/planning/outputs/svg.py|pure-data|src/drawingmachine/domain/planning/service.py|deterministic SVG projection of an existing planning result
+src/drawingmachine/domain/planning/strokes/__init__.py|delegate|src/drawingmachine/domain/planning/service.py|namespace only re-exports deterministic stroke helpers called by planning service
+src/drawingmachine/domain/planning/strokes/dedupe.py|delegate|src/drawingmachine/domain/planning/service.py|deterministic path deduplication called by planning service before it classifies plan checks
+src/drawingmachine/domain/planning/strokes/postprocess.py|delegate|src/drawingmachine/domain/planning/service.py|deterministic path postprocessing called by planning service before it classifies plan checks
+src/drawingmachine/domain/planning/strokes/tracing.py|delegate|src/drawingmachine/domain/planning/service.py|deterministic skeleton tracing called by planning service before it classifies plan checks
+src/drawingmachine/domain/workflow/__init__.py|delegate|src/drawingmachine/domain/workflow/routing.py|namespace only re-exports separately manifested workflow models and routing authority
+src/drawingmachine/domain/workflow/normalization.py|delegate|src/drawingmachine/application/offline_job_chain.py|image worker task calls deterministic normalization; offline chain owns task dispatch and acceptance of its outcome
+src/drawingmachine/errors.py|pure-data|src/drawingmachine/service/dispatcher.py|error category payload and exception types contain no dispatch state or effects
+src/drawingmachine/install/__init__.py|pure-data|src/drawingmachine/install/client_endpoint.py|empty install namespace marker; client endpoint module owns installation checks and effects
+src/drawingmachine/json_types.py|pure-data|src/drawingmachine/service/dispatcher.py|JSON type aliases only with no runtime definitions or effects
+src/drawingmachine/logging_config.py|delegate|src/drawingmachine/service/runtime.py|applies a supplied log level; runtime owns configuration loading and service lifecycle
+src/drawingmachine/ports/__init__.py|pure-data|src/drawingmachine/service/runtime.py|empty ports namespace marker with no executable definitions or imports
+src/drawingmachine/ports/clock.py|pure-data|src/drawingmachine/service/runtime.py|clock protocol only supplies timestamps; runtime and domain owners decide their use
+src/drawingmachine/protocol/__init__.py|delegate|src/drawingmachine/service/dispatcher.py|namespace only re-exports frame codec and protocol DTOs consumed by dispatcher
+src/drawingmachine/protocol/models.py|pure-data|src/drawingmachine/service/dispatcher.py|immutable request and response DTOs; dispatcher owns command selection and error mapping
+src/drawingmachine/resources/__init__.py|pure-data|src/drawingmachine/resources/openclaw/__init__.py|empty packaged-resource namespace; OpenClaw resource parser owns validation
+src/drawingmachine/resources/install/__init__.py|pure-data|src/drawingmachine/service/runtime.py|empty install-resource namespace with no executable definitions or imports
+src/drawingmachine/resources/systemd/__init__.py|pure-data|src/drawingmachine/service/runtime.py|empty systemd-resource namespace with no executable definitions or imports
+src/drawingmachine/service/__init__.py|delegate|src/drawingmachine/service/runtime.py|namespace only re-exports service authorities without adding behavior
+src/drawingmachine/service/models.py|pure-data|src/drawingmachine/service/dispatcher.py|peer request-context and status DTOs contain no authorization or dispatch behavior

@@ -1,0 +1,31 @@
+{
+  "status": {
+    "status_str": "success",
+    "completed": true
+  },
+  "outputs": {
+    "99": {
+      "images": [
+        {
+          "filename": "package_b_third.png",
+          "subfolder": "alternate",
+          "type": "temp"
+        }
+      ]
+    },
+    "18": {
+      "images": [
+        {
+          "filename": "package_b_first.png",
+          "subfolder": "package-b",
+          "type": "output"
+        },
+        {
+          "filename": "package_b_second.png",
+          "subfolder": "package-b",
+          "type": "output"
+        }
+      ]
+    }
+  }
+}

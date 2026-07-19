@@ -1,0 +1,7 @@
+{
+  "18": {"inputs": {"filename_prefix": "drawingmachine"}},
+  "25": {"inputs": {"image": "input.png"}},
+  "27": {"inputs": {"prompt": "Create a clean black-and-white drawable image with simple connected contours."}},
+  "28": {"inputs": {"cfg": 4.0, "denoise": 0.7, "seed": 1, "steps": 20}},
+  "221": {"inputs": {"scale_to_length": 576}}
+}

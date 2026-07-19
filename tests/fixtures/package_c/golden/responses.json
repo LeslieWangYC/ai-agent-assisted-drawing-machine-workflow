@@ -1,0 +1,80 @@
+{
+  "offsets": {
+    "G54": [
+      96.0,
+      96.0,
+      188.5
+    ],
+    "G55": [
+      1.0,
+      2.0,
+      3.0
+    ]
+  },
+  "positions": {
+    "MPos": [
+      192.0,
+      192.0,
+      192.0
+    ],
+    "WCO": [
+      96.0,
+      96.0,
+      188.5
+    ],
+    "WPos": [
+      96.0,
+      96.0,
+      3.5
+    ]
+  },
+  "preflight": {
+    "computed_wpos_from_mpos_g54": [
+      96.0,
+      96.0,
+      3.5
+    ],
+    "errors": [],
+    "has_g54_offset": true,
+    "missing_ok_commands": [],
+    "offsets": [
+      "[G54:96,96,188.5]",
+      "ok"
+    ],
+    "parsed_offsets": {
+      "G54": [
+        96.0,
+        96.0,
+        188.5
+      ]
+    },
+    "parser_state": [
+      "[GC:G0 G54 G17]",
+      "ok"
+    ],
+    "state": "Idle",
+    "status_line": "<Idle|MPos:192,192,192|WPos:96,96,3.5|WCO:96,96,188.5>",
+    "status_positions": {
+      "MPos": [
+        192.0,
+        192.0,
+        192.0
+      ],
+      "WCO": [
+        96.0,
+        96.0,
+        188.5
+      ],
+      "WPos": [
+        96.0,
+        96.0,
+        3.5
+      ]
+    }
+  },
+  "states": {
+    "<Alarm|MPos:1,2,3>": "Alarm",
+    "<Idle|MPos:1,2,3>": "Idle",
+    "bad": null
+  }
+}

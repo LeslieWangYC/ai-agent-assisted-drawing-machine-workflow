@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "resources": [
+    {
+      "resource": "systemd/drawingmachine.service",
+      "destination": "%h/.config/systemd/user/drawingmachine.service",
+      "creator": "cutover",
+      "owner": "drawingmachine-service",
+      "group": "drawingmachine-service",
+      "mode": "0644",
+      "sha256": "80bb940fad56644339f44de29f9dd655c078c371d4fcb4e669807fb245cf31bb",
+      "purpose": "service user unit"
+    },
+    {
+      "resource": "systemd/drawingmachine-client-endpoint.service",
+      "destination": "%h/.config/systemd/user/drawingmachine-client-endpoint.service",
+      "creator": "cutover",
+      "owner": "client-principal",
+      "group": "client-principal",
+      "mode": "0644",
+      "sha256": "33e05c3c79e538b99e205e135e27b50b66fd5924723ebe9f4ec6ff34a011b29e",
+      "purpose": "client volatile runtime endpoint user unit"
+    },
+    {
+      "resource": "install/service-access.toml.example",
+      "destination": "/home/drawingmachine-service/.config/drawingmachine/service-access.toml",
+      "creator": "cutover",
+      "owner": "drawingmachine-service",
+      "group": "drawingmachine-connect",
+      "mode": "0640",
+      "sha256": "b2dc18f27ae1b0e33356619d1e91339b786200139307bf7208ad0709b4a33534",
+      "purpose": "closed service access policy template"
+    },
+    {
+      "resource": "install/openclaw-deployment.toml.example",
+      "destination": "/home/drawingmachine-service/.config/drawingmachine/openclaw-deployment.toml",
+      "creator": "cutover",
+      "owner": "drawingmachine-service",
+      "group": "drawingmachine-service",
+      "mode": "0640",
+      "sha256": "585fa9addd40c2af025557ec579132f08d841f4e154939f92efe6f97bfe6bbb8",
+      "purpose": "closed OpenClaw deployment policy template"
+    },
+    {
+      "resource": "install/config/application.toml.example",
+      "destination": "/home/drawingmachine-service/.config/drawingmachine/config.toml",
+      "creator": "cutover",
+      "owner": "drawingmachine-service",
+      "group": "drawingmachine-service",
+      "mode": "0640",
+      "sha256": "0d08a60668b9842dffbaf5857ef57dac4bd9cf5541a53aa7c028ecc7bfb7c310",
+      "purpose": "application configuration template"
+    },
+    {
+      "resource": "install/config/machines/default.toml.example",
+      "destination": "/home/drawingmachine-service/.config/drawingmachine/machines/default.toml",
+      "creator": "cutover",
+      "owner": "drawingmachine-service",
+      "group": "drawingmachine-service",
+      "mode": "0640",
+      "sha256": "1c9a6395750b5e9fbb09ddd99197e7216d013d506ef13e9f608bee41316b7ae0",
+      "purpose": "machine configuration template"
+    },
+    {
+      "resource": "install/config/providers/local-comfyui.toml.example",
+      "destination": "/home/drawingmachine-service/.config/drawingmachine/providers/local-comfyui.toml",
+      "creator": "cutover",
+      "owner": "drawingmachine-service",
+      "group": "drawingmachine-service",
+      "mode": "0640",
+      "sha256": "bf126e27c4082b0ece1ab7f81a01aa0d890596195c42952af5645ae80541ae7f",
+      "purpose": "provider configuration template"
+    },
+    {
+      "resource": "install/config/providers/local-comfyui-workflow.json.example",
+      "destination": "/home/drawingmachine-service/.config/drawingmachine/providers/local-comfyui-workflow.json",
+      "creator": "cutover",
+      "owner": "drawingmachine-service",
+      "group": "drawingmachine-service",
+      "mode": "0640",
+      "sha256": "fd1e46aa4cdb63f9ef3f38fa2a0f58a39237f5053ae1819ab2f20018cf599a3a",
+      "purpose": "Local ComfyUI workflow template"
+    }
+  ],
+  "render": {
+    "schema_version": 1,
+    "max_input_value_bytes": 4096,
+    "max_total_rendered_bytes": 524288,
+    "inputs": [
+      {"name": "SERVICE_UID", "kind": "posix-id"},
+      {"name": "SERVICE_GID", "kind": "posix-id"},
+      {"name": "AUTOMATION_UID", "kind": "posix-id"},
+      {"name": "AUTOMATION_GID", "kind": "posix-id"},
+      {"name": "OPERATOR_UID", "kind": "posix-id"},
+      {"name": "OPERATOR_GID", "kind": "posix-id"},
+      {"name": "CONNECT_GID", "kind": "posix-id"},
+      {"name": "AUTOMATION_READ_GID", "kind": "posix-id"},
+      {"name": "REGISTRY_OWNER_UID", "kind": "posix-id"},
+      {"name": "REGISTRY_OWNER_GID", "kind": "posix-id"},
+      {"name": "AUTOMATION_USER", "kind": "posix-name"},
+      {"name": "OPENCLAW_REGISTRY_ROOT", "kind": "absolute-path"},
+      {"name": "OPENCLAW_MANAGED_ROOT", "kind": "absolute-path"},
+      {"name": "SERIAL_DEVICE", "kind": "serial-device"}
+    ],
+    "derived": [
+      {"name": "OPENCLAW_MANIFEST_SHA256", "kind": "resource-sha256", "resource": "openclaw/manifest.json"},
+      {"name": "OPENCLAW_REGISTRY_POLICY_SHA256", "kind": "resource-sha256", "resource": "openclaw/registry-policy.json"},
+      {"name": "SERVICE_ACCESS_SHA256", "kind": "rendered-resource-sha256", "resource": "install/service-access.toml.example"}
+    ]
+  },
+  "managed_paths": [
+    {"path": "@SERVICE_HOME@", "kind": "directory", "creator": "cutover", "owner": "service", "group": "service", "mode": "0710", "access": "connect:--x", "default_access": "none", "automatic": false},
+    {"path": "@SERVICE_CONFIG_ROOT@", "kind": "directory", "creator": "cutover", "owner": "service", "group": "service", "mode": "0710", "access": "connect:--x", "default_access": "none", "automatic": false},
+    {"path": "@SERVICE_STATE_ROOT@", "kind": "directory", "creator": "cutover", "owner": "service", "group": "service", "mode": "0700", "access": "service:rwx", "default_access": "none", "automatic": false},
+    {"path": "@SERVICE_DATA_ROOT@", "kind": "directory", "creator": "cutover", "owner": "service", "group": "service", "mode": "0700", "access": "service:rwx", "default_access": "none", "automatic": false},
+    {"path": "@SERVICE_RUNTIME_ROOT@", "kind": "directory", "creator": "service-runtime", "owner": "service", "group": "connect", "mode": "0710", "access": "connect:--x", "default_access": "none", "automatic": true},
+    {"path": "@CANONICAL_SOCKET@", "kind": "socket", "creator": "service-runtime", "owner": "service", "group": "connect", "mode": "0660", "access": "connect:rw-", "default_access": "none", "automatic": true},
+    {"path": "@AUTOMATION_IMPORT_ROOT@", "kind": "directory", "creator": "cutover", "owner": "service", "group": "connect", "mode": "2770", "access": "automation:rwx", "default_access": "automation:rwx", "automatic": false},
+    {"path": "@AUTOMATION_EXPORT_ROOT@", "kind": "directory", "creator": "cutover", "owner": "service", "group": "connect", "mode": "2770", "access": "automation:r-x", "default_access": "automation:r-x", "automatic": false},
+    {"path": "@IMAGE_IMPORT_ROOT@", "kind": "directory", "creator": "cutover", "owner": "service", "group": "connect", "mode": "2770", "access": "automation:rwx", "default_access": "automation:rwx", "automatic": false},
+    {"path": "@IMAGE_IMPORT_ROOT@/prepare", "kind": "directory", "creator": "cutover", "owner": "service", "group": "connect", "mode": "2770", "access": "automation:rwx", "default_access": "automation:rwx", "automatic": false},
+    {"path": "@IMAGE_IMPORT_ROOT@/drop", "kind": "directory", "creator": "cutover", "owner": "service", "group": "connect", "mode": "2770", "access": "automation:rwx", "default_access": "automation:rwx", "automatic": false},
+    {"path": "@IMAGE_IMPORT_ROOT@/admitted", "kind": "directory", "creator": "cutover", "owner": "service", "group": "service", "mode": "0700", "access": "service:rwx", "default_access": "none", "automatic": false},
+    {"path": "@IMAGE_IMPORT_ROOT@/quarantine", "kind": "directory", "creator": "cutover", "owner": "service", "group": "service", "mode": "0700", "access": "service:rwx", "default_access": "none", "automatic": false},
+    {"path": "@IMAGE_IMPORT_ROOT@/observations", "kind": "directory", "creator": "cutover", "owner": "service", "group": "service", "mode": "0700", "access": "service:rwx", "default_access": "none", "automatic": false},
+    {"path": "@GCODE_IMPORT_ROOT@", "kind": "directory", "creator": "cutover", "owner": "service", "group": "connect", "mode": "2770", "access": "automation:rwx", "default_access": "automation:rwx", "automatic": false},
+    {"path": "@GCODE_IMPORT_ROOT@/prepare", "kind": "directory", "creator": "cutover", "owner": "service", "group": "connect", "mode": "2770", "access": "automation:rwx", "default_access": "automation:rwx", "automatic": false},
+    {"path": "@GCODE_IMPORT_ROOT@/drop", "kind": "directory", "creator": "cutover", "owner": "service", "group": "connect", "mode": "2770", "access": "automation:rwx", "default_access": "automation:rwx", "automatic": false},
+    {"path": "@GCODE_IMPORT_ROOT@/admitted", "kind": "directory", "creator": "cutover", "owner": "service", "group": "service", "mode": "0700", "access": "service:rwx", "default_access": "none", "automatic": false},
+    {"path": "@GCODE_IMPORT_ROOT@/quarantine", "kind": "directory", "creator": "cutover", "owner": "service", "group": "service", "mode": "0700", "access": "service:rwx", "default_access": "none", "automatic": false},
+    {"path": "@GCODE_IMPORT_ROOT@/observations", "kind": "directory", "creator": "cutover", "owner": "service", "group": "service", "mode": "0700", "access": "service:rwx", "default_access": "none", "automatic": false},
+    {"path": "@AUTOMATION_EXPORT_ROOT@/jobs", "kind": "directory", "creator": "cutover", "owner": "service", "group": "connect", "mode": "2750", "access": "automation:r-x", "default_access": "automation:r-x", "automatic": false},
+    {"path": "@AUTOMATION_EXPORT_ROOT@/jobs/<job-id>", "kind": "directory", "creator": "service-runtime", "owner": "service", "group": "connect", "mode": "2750", "access": "automation:r-x", "default_access": "automation:r-x", "automatic": true},
+    {"path": "@AUTOMATION_EXPORT_ROOT@/jobs/<job-id>/<relative-path>", "kind": "regular-or-directory", "creator": "service-runtime", "owner": "service", "group": "connect", "mode": "0640-or-2750", "access": "automation:r--or-r-x", "default_access": "inherited", "automatic": true},
+    {"path": "@AUTOMATION_RUNTIME_ENDPOINT@", "kind": "symlink", "creator": "client-runtime-helper", "owner": "automation", "group": "automation", "mode": "0777", "access": "private-parent", "default_access": "none", "automatic": true},
+    {"path": "@OPERATOR_RUNTIME_ENDPOINT@", "kind": "symlink", "creator": "client-runtime-helper", "owner": "operator", "group": "operator", "mode": "0777", "access": "private-parent", "default_access": "none", "automatic": true},
+    {"path": "@AUTOMATION_IMPORT_ENDPOINT@", "kind": "symlink", "creator": "cutover", "owner": "automation", "group": "automation", "mode": "0777", "access": "private-parent", "default_access": "none", "automatic": false},
+    {"path": "@AUTOMATION_EXPORT_ENDPOINT@", "kind": "symlink", "creator": "cutover", "owner": "automation", "group": "automation", "mode": "0777", "access": "private-parent", "default_access": "none", "automatic": false},
+    {"path": "@OPENCLAW_REGISTRY_ROOT@", "kind": "directory", "creator": "cutover", "owner": "admin", "group": "admin", "mode": "0750", "access": "service:r-x", "default_access": "none", "automatic": false},
+    {"path": "@OPENCLAW_MANAGED_ROOT@", "kind": "directory", "creator": "cutover", "owner": "service", "group": "automation-read", "mode": "2750", "access": "automation:r-x", "default_access": "automation:r-x", "automatic": false},
+    {"path": "@OPENCLAW_MANAGED_ROOT@/agents", "kind": "directory", "creator": "cutover", "owner": "service", "group": "automation-read", "mode": "2750", "access": "automation:r-x", "default_access": "automation:r-x", "automatic": false},
+    {"path": "@OPENCLAW_MANAGED_ROOT@/agents/cnc-drawable-translator", "kind": "directory", "creator": "cutover", "owner": "service", "group": "automation-read", "mode": "2750", "access": "automation:r-x", "default_access": "automation:r-x", "automatic": false},
+    {"path": "@OPENCLAW_MANAGED_ROOT@/agents/cnc-drawable-router", "kind": "directory", "creator": "cutover", "owner": "service", "group": "automation-read", "mode": "2750", "access": "automation:r-x", "default_access": "automation:r-x", "automatic": false},
+    {"path": "@OPENCLAW_MANAGED_ROOT@/agents/cnc-drawable-translator/AGENTS.md", "kind": "regular", "creator": "service-runtime", "owner": "service", "group": "automation-read", "mode": "0640", "access": "automation:r--", "default_access": "inherited", "automatic": false, "sha256": "5cb8256f92b17deca7a5866a2fcb947a53cc5d1889adedbf4d9cadfcb554953d"},
+    {"path": "@OPENCLAW_MANAGED_ROOT@/agents/cnc-drawable-translator/TOOLS.md", "kind": "regular", "creator": "service-runtime", "owner": "service", "group": "automation-read", "mode": "0640", "access": "automation:r--", "default_access": "inherited", "automatic": false, "sha256": "40c2d808817bc14cc066cdc13e54a78a56a6643e1709e1cc6c4aaf42e9886b3c"},
+    {"path": "@OPENCLAW_MANAGED_ROOT@/agents/cnc-drawable-router/AGENTS.md", "kind": "regular", "creator": "service-runtime", "owner": "service", "group": "automation-read", "mode": "0640", "access": "automation:r--", "default_access": "inherited", "automatic": false, "sha256": "d593c533c46f69f78b68e84500c56ece297d752331bd48dc093d786def7487a0"},
+    {"path": "@OPENCLAW_MANAGED_ROOT@/agents/cnc-drawable-router/TOOLS.md", "kind": "regular", "creator": "service-runtime", "owner": "service", "group": "automation-read", "mode": "0640", "access": "automation:r--", "default_access": "inherited", "automatic": false, "sha256": "c61b5974726b84a4f8c5a55dcbcec79579fc5058f88bf9b4f0f5661e074f2ae9"}
+  ],
+  "limits": {
+    "max_entries_per_role_phase": 32,
+    "max_export_artifacts_per_job": 16,
+    "lease_max_bytes": 16384,
+    "image_max_payload_bytes": 33554432,
+    "gcode_max_payload_bytes": 16777216
+  }
+}

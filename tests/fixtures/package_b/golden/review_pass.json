@@ -1,0 +1,22 @@
+{
+  "schema": "processed_image_review_v1",
+  "job_name": "package-b-golden",
+  "reviewed_at": "<CAPTURED_AT>",
+  "reviewer": "agent:cnc-drawable-translator",
+  "processed_image": "<FIXTURE_ROOT>/expected/normalized.png",
+  "handoff": null,
+  "status": "PASS_TO_BUILD",
+  "checks": {
+    "recognizable_subject": true,
+    "background_simplified": true,
+    "black_on_white": true,
+    "no_edge_clipping": true,
+    "line_density_drawable": true,
+    "no_soft_gradients": true,
+    "limited_tiny_isolated_marks": true,
+    "vectorization_complexity_ok": true
+  },
+  "issues": [],
+  "revised_prompt": null,
+  "next_allowed_stage": "build_drawable_job"
+}

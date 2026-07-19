@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "agents": [
+    {
+      "agent_id": "cnc-drawable-translator",
+      "workspace_relative_path": "agents/cnc-drawable-translator",
+      "required_tools": [
+        "image",
+        "read",
+        "write",
+        "exec",
+        "sessions_spawn",
+        "subagents"
+      ]
+    },
+    {
+      "agent_id": "cnc-drawable-router",
+      "workspace_relative_path": "agents/cnc-drawable-router",
+      "required_tools": [
+        "image",
+        "read",
+        "write",
+        "exec"
+      ]
+    }
+  ]
+}

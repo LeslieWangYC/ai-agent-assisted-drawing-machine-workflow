@@ -1,0 +1,50 @@
+{
+  "calibrated_work_pose_evidence": {
+    "MPos": [
+      192.0,
+      192.0,
+      192.0
+    ],
+    "WPos": [
+      96.0,
+      96.0,
+      3.5
+    ]
+  },
+  "legacy_gate": {
+    "allow_stream": true,
+    "blockers": [],
+    "warnings": []
+  },
+  "missing_g54_legacy_gate": {
+    "allow_stream": true,
+    "blockers": [],
+    "warnings": [
+      "G54 offset line was not observed in $# output"
+    ]
+  },
+  "post_home_without_mpos_legacy_gate": {
+    "allow_stream": true,
+    "blockers": [],
+    "warnings": []
+  },
+  "startup_homed_legacy_gate": {
+    "allow_stream": true,
+    "blockers": [],
+    "warnings": []
+  },
+  "startup_missing_mpos_legacy_gate": {
+    "allow_stream": false,
+    "blockers": [
+      "startup position gate requires MPos in status report, but no MPos was observed"
+    ],
+    "warnings": []
+  },
+  "startup_unhomed_legacy_gate": {
+    "allow_stream": false,
+    "blockers": [
+      "startup MPos gate failed with tolerance 1.000 mm: X actual 0.000, expected 192.000, delta 192.000; Y actual 0.000, expected 192.000, delta 192.000; Z actual 0.000, expected 192.000, delta 192.000"
+    ],
+    "warnings": []
+  }
+}

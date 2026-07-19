@@ -1,0 +1,51 @@
+{
+  "status": "generated",
+  "path_mode": "stroke",
+  "gcode": "<FIXTURE_ROOT>/expected/drawing.gcode",
+  "report": "<FIXTURE_ROOT>/expected/gcode_build.md",
+  "selected_plan": "<FIXTURE_ROOT>/expected/selected_path_plan.json",
+  "metrics": {
+    "path_count": 5,
+    "selected_path_count_before_ordering": 5,
+    "point_count": 441,
+    "draw_length_mm": 7587.722,
+    "pen_up_travel_mm": 258.261,
+    "estimated_draw_time_s": 505.85,
+    "estimated_travel_time_s": 12.91,
+    "rough_estimated_total_time_s": 528.76,
+    "pen_lift_count": 5,
+    "canvas_width_mm": 120.0,
+    "canvas_height_mm": 120.0,
+    "bounds": {
+      "min_x": 54.0,
+      "min_y": 53.25,
+      "max_x": 138.0,
+      "max_y": 138.75,
+      "span_x": 84.0,
+      "span_y": 85.5
+    },
+    "work_coordinate": "G54",
+    "xy_airrun": false,
+    "coordinate_transform": {
+      "align_mode": "center",
+      "mirror_x": false,
+      "mirror_y": true,
+      "anchor_x": 0.0,
+      "anchor_y": 0.0,
+      "paper_center_x": 96.0,
+      "paper_center_y": 96.0
+    }
+  },
+  "checks": [
+    {
+      "severity": "INFO",
+      "code": "z_axis_pen_lift",
+      "message": "G-code uses Z-axis pen up/down commands."
+    },
+    {
+      "severity": "INFO",
+      "code": "static_only",
+      "message": "This is a static generation result; it is not machine-run validation."
+    }
+  ]
+}

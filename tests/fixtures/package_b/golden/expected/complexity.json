@@ -1,0 +1,62 @@
+{
+  "schema": "processed_image_complexity_report_v1",
+  "created_at": "<CAPTURED_AT>",
+  "input": "<FIXTURE_ROOT>/expected/normalized.png",
+  "size_px": [
+    160,
+    160
+  ],
+  "binarization": {
+    "method": "otsu",
+    "threshold": 1,
+    "inverted": false,
+    "min_component_area_px": 8
+  },
+  "metrics": {
+    "foreground_pixels": 15853,
+    "foreground_ratio": 0.61925781,
+    "component_count": 1,
+    "largest_component_pixels": 15853,
+    "top5_component_pixels": [
+      15853
+    ],
+    "skeleton_pixels": 411,
+    "skeleton_ratio": 0.01605469,
+    "boundary_pixels": 802,
+    "boundary_ratio": 0.03132812,
+    "horizontal_transitions": 276,
+    "vertical_transitions": 304,
+    "transitions_total": 580,
+    "transitions_per_megapixel": 22656.25,
+    "content_bbox_px": [
+      0,
+      0,
+      159,
+      159
+    ],
+    "content_bbox_fill_ratio": 0.61925781
+  },
+  "limits": {
+    "soft": {
+      "component_count": 160,
+      "skeleton_pixels": 26000,
+      "boundary_pixels": 45000,
+      "transitions_total": 68000
+    },
+    "hard": {
+      "component_count": 260,
+      "skeleton_pixels": 34000,
+      "boundary_pixels": 60000,
+      "transitions_total": 100000
+    }
+  },
+  "decision": {
+    "status": "PASS",
+    "reason": "processed image complexity is within default planner limits",
+    "soft_limit_hits": [],
+    "hard_limit_hits": [],
+    "next_allowed_stage": "build_drawable_job",
+    "dedupe_profile": null
+  },
+  "hardware_touched": false
+}

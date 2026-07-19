@@ -1,0 +1,33 @@
+# Render every bounded placeholder once during the separately authorized cutover.
+# Staging contract: mode = "2770", bundle_mode = "2770", payload_mode = "0640".
+# Service-private admitted/quarantine/observations: private_mode = "0700".
+# Exact role ACL: automation_named_user_acl = "rwx" on role prepare/drop only.
+# Closed quotas: max_entries_per_role_phase = 32, image_max_payload_bytes = 33554432,
+# gcode_max_payload_bytes = 16777216, lease_max_bytes = 16384.
+schema_version = 1
+canonical_runtime_dir = "/run/user/@SERVICE_UID@/drawingmachine"
+canonical_socket = "/run/user/@SERVICE_UID@/drawingmachine/service.sock"
+automation_runtime_endpoint = "/run/user/@AUTOMATION_UID@/drawingmachine/service.sock"
+operator_runtime_endpoint = "/run/user/@OPERATOR_UID@/drawingmachine/service.sock"
+canonical_data_dir = "/home/drawingmachine-service/.local/share/drawingmachine"
+automation_import_root = "/home/drawingmachine-service/.local/share/drawingmachine/imports/automation"
+automation_export_root = "/home/drawingmachine-service/.local/share/drawingmachine/exports/automation"
+automation_import_endpoint = "/home/@AUTOMATION_USER@/.local/share/drawingmachine/imports"
+automation_export_endpoint = "/home/@AUTOMATION_USER@/.local/share/drawingmachine/exports"
+openclaw_policy_path = "/home/drawingmachine-service/.config/drawingmachine/openclaw-deployment.toml"
+
+[service_principal]
+uid = @SERVICE_UID@
+gid = @SERVICE_GID@
+
+[automation_principal]
+uid = @AUTOMATION_UID@
+gid = @AUTOMATION_GID@
+
+[operator_principal]
+uid = @OPERATOR_UID@
+gid = @OPERATOR_GID@
+
+[connect_group]
+name = "drawingmachine-connect"
+gid = @CONNECT_GID@

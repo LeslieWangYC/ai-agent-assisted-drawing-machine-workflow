@@ -1,0 +1,98 @@
+name: Python Stage 2 checks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev]' wheel setuptools
+
+      - name: Build package
+        run: python -m build
+
+      - name: Run final Stage 2 suite
+        run: python -m pytest -q
+
+      - name: Prove installed wheel outside checkout
+        run: |
+          python -m venv --system-site-packages /tmp/drawingmachine-wheel
+          /tmp/drawingmachine-wheel/bin/python -m pip install --no-index --no-deps dist/*.whl
+          (cd /tmp && /tmp/drawingmachine-wheel/bin/drawingmachine --help)
+
+      - name: Run installed resource and topology gates
+        run: |
+          python -m pytest tests/packaging \
+            tests/e2e/test_installed_multi_principal_service.py \
+            tests/e2e/test_installed_cross_principal_data.py \
+            tests/e2e/test_stage2_final_shape.py \
+            tests/e2e/test_stage2_final_recovery.py \
+            tests/e2e/test_package_d_no_live_boundaries.py -q
+
+      - name: Enforce branch coverage
+        run: python -m pytest --cov=drawingmachine --cov-branch --cov-report=json:coverage.json --cov-fail-under=90
+
+      - name: Check independent branch coverage
+        run: python tools/check_branch_coverage.py coverage.json
+
+      - name: Enforce machine safety branch coverage
+        run: |
+          python -m pytest tests/unit/domain/machine tests/unit/domain/fluidnc tests/unit/application/machine tests/integration/hardware \
+            --cov=drawingmachine.domain.machine.phases \
+            --cov=drawingmachine.domain.machine.approvals \
+            --cov=drawingmachine.domain.machine.transitions \
+            --cov=drawingmachine.domain.fluidnc.gates \
+            --cov=drawingmachine.domain.fluidnc.responses \
+            --cov=drawingmachine.application.machine.execution \
+            --cov=drawingmachine.application.machine.recovery \
+            --cov-branch \
+            --cov-report=json:machine-safety-coverage.json \
+            --cov-fail-under=100
+          python tools/check_branch_coverage.py machine-safety-coverage.json --minimum 100
+
+      - name: Enforce every current safety authority module
+        run: python tools/check_safety_module_coverage.py coverage.json tests/architecture/package_c_safety_modules.txt --minimum 100
+
+      - name: Enforce G-code safety branch coverage
+        run: |
+          python -m pytest tests/unit/domain/gcode \
+            --cov=drawingmachine.domain.gcode.static_check \
+            --cov=drawingmachine.domain.gcode.send_plan \
+            --cov=drawingmachine.domain.gcode.readiness \
+            --cov-branch \
+            --cov-report=json:gcode-safety-coverage.json \
+            --cov-fail-under=100
+          python tools/check_branch_coverage.py gcode-safety-coverage.json --minimum 100
+
+      - name: Run strict type checks
+        run: python -m mypy --strict src/drawingmachine
+
+      - name: Lint Stage 2
+        run: python -m ruff check --select E4,E7,E9,F,I,UP,B,SIM,RUF src/drawingmachine tests tools
+
+      - name: Check Stage 2 formatting
+        run: python -m ruff format --check src/drawingmachine tests tools
+
+      - name: Enforce architecture contracts
+        run: lint-imports
+
+      - name: Check repository hygiene
+        run: git diff --check

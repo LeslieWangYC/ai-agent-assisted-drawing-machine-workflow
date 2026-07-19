@@ -1,0 +1,16 @@
+{
+  "after_stabilization_or_action": {
+    "evidence": [
+      "Grbl 1.1h ['$' for help]",
+      "<Idle|MPos:0,0,0>"
+    ],
+    "package_c_expected": "RECOVERY_REQUIRED"
+  },
+  "fresh_session": {
+    "evidence": [
+      "Grbl 1.1h ['$' for help]",
+      "<Idle|MPos:0,0,0>"
+    ],
+    "package_c_expected": "AWAIT_HOME_ONLY"
+  }
+}

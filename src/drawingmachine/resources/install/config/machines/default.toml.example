@@ -1,0 +1,72 @@
+schema_version = 1
+[profile]
+name = "default"
+
+[profile.planning]
+canvas_width_mm = 150.0
+canvas_height_mm = 150.0
+pen_width_mm = 0.5
+min_gap_mm = 0.8
+threshold = 128
+invert = false
+min_component_area_px = 8
+simplify_tolerance_mm = 0.12
+min_path_length_mm = 0.6
+drop_short_stroke_mm = 0.35
+merge_endpoint_distance_mm = 0.45
+merge_angle_deg = 35.0
+dedupe_short_path_length_mm = 2.0
+dedupe_distance_mm = 0.3
+dedupe_angle_deg = 25.0
+dedupe_overlap_ratio = 0.65
+hatch_spacing_mm = 0.8
+hatch_min_run_mm = 0.8
+fill_min_thickness_mm = 0.85
+
+# Geometry and feed values below are illustrative placeholders for a generic
+# plotter profile. Measure and calibrate your own machine before live use.
+[profile.gcode]
+hardware_canvas_width_mm = 200.0
+hardware_canvas_height_mm = 200.0
+machine_width_mm = 260.0
+machine_height_mm = 260.0
+paper_center_x = 130.0
+paper_center_y = 130.0
+pen_up_z = 4.0
+pen_down_z = 0.0
+feed_travel = 1500.0
+feed_draw = 800.0
+feed_pen_down = 120.0
+feed_pen_up = 450.0
+max_feed = 1500.0
+work_coordinate = "G54"
+align_mode = "center"
+mirror_y = true
+safe_start = true
+path_mode = "stroke"
+
+[profile.hardware]
+firmware = "FluidNC"
+transport = "serial"
+serial_port = "@SERIAL_DEVICE@"
+baud = 115200
+line_ending = "\n"
+open_timeout_seconds = 2.0
+settle_timeout_seconds = 15.0
+read_timeout_seconds = 1.0
+command_timeout_seconds = 10.0
+home_timeout_seconds = 300.0
+stream_idle_timeout_seconds = 30.0
+approval_ttl_seconds = 60
+require_g54_offset = true
+expected_homed_mpos = [260.0, 260.0, 260.0]
+position_tolerance_mm = 0.5
+post_run_home_z = true
+
+[profile.hardware.automation_principal]
+uid = @AUTOMATION_UID@
+gid = @AUTOMATION_GID@
+
+[profile.hardware.operator_principal]
+uid = @OPERATOR_UID@
+gid = @OPERATOR_GID@

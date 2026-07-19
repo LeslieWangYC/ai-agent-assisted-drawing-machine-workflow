@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "agent_ids": [
+    "cnc-drawable-translator",
+    "cnc-drawable-router"
+  ],
+  "resources": [
+    {
+      "kind": "MANAGED_TARGET",
+      "source": "agents/cnc-drawable-translator/AGENTS.md",
+      "destination": "agents/cnc-drawable-translator/AGENTS.md",
+      "media_type": "text/markdown; charset=utf-8",
+      "size_bytes": 6182,
+      "sha256": "5cb8256f92b17deca7a5866a2fcb947a53cc5d1889adedbf4d9cadfcb554953d",
+      "target_mode": 416
+    },
+    {
+      "kind": "MANAGED_TARGET",
+      "source": "agents/cnc-drawable-translator/TOOLS.md",
+      "destination": "agents/cnc-drawable-translator/TOOLS.md",
+      "media_type": "text/markdown; charset=utf-8",
+      "size_bytes": 5603,
+      "sha256": "40c2d808817bc14cc066cdc13e54a78a56a6643e1709e1cc6c4aaf42e9886b3c",
+      "target_mode": 416
+    },
+    {
+      "kind": "MANAGED_TARGET",
+      "source": "agents/cnc-drawable-router/AGENTS.md",
+      "destination": "agents/cnc-drawable-router/AGENTS.md",
+      "media_type": "text/markdown; charset=utf-8",
+      "size_bytes": 2547,
+      "sha256": "d593c533c46f69f78b68e84500c56ece297d752331bd48dc093d786def7487a0",
+      "target_mode": 416
+    },
+    {
+      "kind": "MANAGED_TARGET",
+      "source": "agents/cnc-drawable-router/TOOLS.md",
+      "destination": "agents/cnc-drawable-router/TOOLS.md",
+      "media_type": "text/markdown; charset=utf-8",
+      "size_bytes": 1876,
+      "sha256": "c61b5974726b84a4f8c5a55dcbcec79579fc5058f88bf9b4f0f5661e074f2ae9",
+      "target_mode": 416
+    },
+    {
+      "kind": "CHECK_ONLY_REGISTRY_POLICY",
+      "source": "registry-policy.json",
+      "media_type": "application/json; charset=utf-8",
+      "size_bytes": 531,
+      "sha256": "a3ae1ae494359e76e742d1b99e1113c3a4bb9db08bfc78375ce68ed445f7fb08"
+    }
+  ]
+}

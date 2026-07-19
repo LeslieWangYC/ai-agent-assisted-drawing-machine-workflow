@@ -1,0 +1,77 @@
+{
+  "raw_line_count": 467,
+  "blank_line_count": 0,
+  "comment_only_line_count": 12,
+  "sendable_line_count": 455,
+  "estimated_serial_bytes": 12104,
+  "max_send_line_length": 28,
+  "first_sendable_lines": [
+    {
+      "source_line": 7,
+      "command": "G21"
+    },
+    {
+      "source_line": 8,
+      "command": "G90"
+    },
+    {
+      "source_line": 9,
+      "command": "G54"
+    },
+    {
+      "source_line": 10,
+      "command": "G1 Z3.500 F400.0"
+    },
+    {
+      "source_line": 12,
+      "command": "G0 X64.500 Y138.750 F1200.0"
+    },
+    {
+      "source_line": 13,
+      "command": "G1 Z0.000 F100.0"
+    },
+    {
+      "source_line": 14,
+      "command": "G1 X127.500 Y138.750 F900.0"
+    },
+    {
+      "source_line": 15,
+      "command": "G1 X127.500 Y138.750 F900.0"
+    }
+  ],
+  "last_sendable_lines": [
+    {
+      "source_line": 459,
+      "command": "G1 X105.000 Y81.750 F900.0"
+    },
+    {
+      "source_line": 460,
+      "command": "G1 X138.000 Y81.750 F900.0"
+    },
+    {
+      "source_line": 461,
+      "command": "G1 X138.000 Y81.000 F900.0"
+    },
+    {
+      "source_line": 462,
+      "command": "G1 X102.750 Y81.000 F900.0"
+    },
+    {
+      "source_line": 463,
+      "command": "G1 X102.000 Y80.250 F900.0"
+    },
+    {
+      "source_line": 464,
+      "command": "G1 X100.500 Y80.250 F900.0"
+    },
+    {
+      "source_line": 465,
+      "command": "G1 X138.000 Y80.250 F900.0"
+    },
+    {
+      "source_line": 466,
+      "command": "G1 Z3.500 F400.0"
+    }
+  ],
+  "streaming_mode": "conservative_send_line_wait_ok"
+}

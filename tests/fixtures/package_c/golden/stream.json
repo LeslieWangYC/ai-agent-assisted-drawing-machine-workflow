@@ -1,0 +1,72 @@
+{
+  "alarm_stop_transcript": [
+    {
+      "acknowledged": false,
+      "classification": "alarm",
+      "command": "G1 X1 Y1",
+      "response": [
+        "ALARM:1"
+      ],
+      "source_line": 1,
+      "stops_before_next_command": true
+    }
+  ],
+  "initial_progress": {
+    "error_count": 0,
+    "last_gcode_event_at": null,
+    "last_source_line": null,
+    "ok_count": 0,
+    "percent": null,
+    "sent": 0,
+    "total": null
+  },
+  "line_ack_transcript": [
+    {
+      "acknowledged": true,
+      "classification": "ack",
+      "command": "G21",
+      "response": [
+        "ok"
+      ],
+      "source_line": 1
+    },
+    {
+      "acknowledged": true,
+      "classification": "ack",
+      "command": "G90",
+      "response": [
+        "ok"
+      ],
+      "source_line": 2
+    },
+    {
+      "acknowledged": false,
+      "classification": "error",
+      "command": "G1 X1 Y1",
+      "response": [
+        "error:2"
+      ],
+      "source_line": 3,
+      "stops_before_next_command": true
+    }
+  ],
+  "progress_after_ack": {
+    "error_count": 0,
+    "last_gcode_event_at": "fixed",
+    "last_source_line": null,
+    "ok_count": 2,
+    "percent": 100.0,
+    "sent": 2,
+    "total": 2
+  },
+  "timeout_stop_transcript": [
+    {
+      "acknowledged": false,
+      "classification": "timeout",
+      "command": "G1 X1 Y1",
+      "response": [],
+      "source_line": 1,
+      "stops_before_next_command": true
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "files": {
+    "branch_loop.png": "23cc7b30e503ca695af9fe06515ca6efa6ee6dbdb914ffdfe1b0e0325b2e9c1f",
+    "comfy_history_multi_output.json": "cbd582f24c8f00ae18d9010ac3fd85333f73520aa7825f6f3c1a04aa294ccfd9",
+    "complex_gradient.png": "ba5e270cb363c51b0ae9b044ebc23db2e3685598f0b8871ac70453a14de32644",
+    "dedupe_overlap.png": "0512234eb60e7e040ddf6de1f3fa9e0a2b3acb1b8364b1acbcd793545cebcdb2",
+    "expected/branch_loop.path_plan.json": "f232c6dd1e76065c66bc84f8cc4db7a8e8253125b24663094643a53d42275a25",
+    "expected/comfy_selected_output.json": "3cbeaaaef97e793fc8d6b8cb08a3a9d585333667c0b42235fff734f7cdb72d08",
+    "expected/complex_gradient.path_plan.json": "5de3b7105d887366935a746ff54ace952a0a964df92ba96e1df0594478c0f270",
+    "expected/complexity.json": "c3ddffb9e8725bbf2028ce9e63e8cc6612eb72da092d1e5bf4be5d2c42a6db9b",
+    "expected/dedupe_overlap.path_plan.json": "faae0f74e5b015b9b58107e6039330723ffab3368217ca48d2f6c096082bce6a",
+    "expected/drawing.gcode": "8f86f7804f8e475877811bcb4c69cf536a3494fb1dda9cc28ecef26690afca6d",
+    "expected/filled_region.path_plan.json": "ef706a9abd3f20c3c7a9249b89258a5074f72e41a8ef91252f6641876b2dce4b",
+    "expected/gcode_build.json": "67c06be010bb33945dfa2fe627490d069d5efbe73bff19d656e68de7e5b31a12",
+    "expected/gcode_preview.json": "abe8cbde52af6a9f8231d5ead90863abcb362ac54bc229a1063bf1adec1e5c3b",
+    "expected/gcode_preview.svg": "20923a77b59b75a2838dbb41c730c775061f0af47bb27f7eb09b2ee741ab6218",
+    "expected/gcode_static.json": "41838c850a56af03669920b21837b156c84be422b6a0d7f81b83baf3633e54a6",
+    "expected/normalize_report.json": "a5834e4cc473bf6b618c23991dea1cb1dc9204c59bc1b90d388622f7e52df36c",
+    "expected/normalized.png": "ab226809fdfa32a511eee222a435de4ec8764c66809a620139fa877c6d7617fe",
+    "expected/outline.path_plan.json": "8f7d60f2546950ff111fbad589a8126cadca4e94121d8c1d203e960e997c0e4c",
+    "expected/readiness.json": "17512c1140f2b5007cfde310caa6b3dd1e96e059a8728b6ff3d13e3c3fa897f0",
+    "expected/route.json": "177fd2befc2350831a6b68e3483a1cfbac9f2fd2d87c4345ed63c7c8dd485392",
+    "expected/selected_path_plan.json": "35400f9bf06a1cad03930b750c609c891ad4ffba653b9418a8b286e32af3739f",
+    "expected/send_plan.json": "332ae23c4502e09d8734585244299ced7daffbb88fd8dc2863b98276bff07646",
+    "filled_region.png": "6ccc36feea9aaaab04594672699d465fc3b5424ebc663da0bb5b284260aa734c",
+    "outline.png": "535b74c2ab74958004eb547c688c59c145440381170766a7aa842e64910cb721",
+    "review_pass.json": "16b29ad440df1cb18c02c98187025d5426fec5f82d9c82999dfc1836bbeaa940",
+    "route_semantic.json": "e9d510257efb727a17ca30e54dc3dd807e3be31efbad40155f675468e85df762"
+  }
+}

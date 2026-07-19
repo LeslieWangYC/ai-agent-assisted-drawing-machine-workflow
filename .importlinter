@@ -1,0 +1,80 @@
+[importlinter]
+root_package = drawingmachine
+
+[importlinter:contract:package-dependency-direction]
+name = Package dependency direction
+type = layers
+containers =
+    drawingmachine
+layers =
+    cli
+    service
+    (application)
+    (adapters)
+    (domain) | ports
+ignore_imports =
+    drawingmachine.ports.repository -> drawingmachine.domain.jobs
+    drawingmachine.ports.artifacts -> drawingmachine.domain.jobs
+    drawingmachine.ports.machine_repository -> drawingmachine.domain.jobs
+    drawingmachine.ports.machine_repository -> drawingmachine.domain.jobs.models
+    drawingmachine.ports.machine_repository -> drawingmachine.domain.machine
+    drawingmachine.ports.fluidnc -> drawingmachine.domain.fluidnc.gates
+    drawingmachine.ports.fluidnc -> drawingmachine.domain.fluidnc.status
+    drawingmachine.ports.fluidnc -> drawingmachine.domain.gcode.stream_program
+
+[importlinter:contract:ports-boundary]
+name = Ports do not depend on implementations
+type = forbidden
+source_modules =
+    drawingmachine.ports
+forbidden_modules =
+    drawingmachine.cli
+    drawingmachine.service
+    drawingmachine.adapters
+
+[importlinter:contract:adapter-boundary]
+name = Adapters do not depend on entrypoints
+type = forbidden
+source_modules =
+    drawingmachine.adapters
+forbidden_modules =
+    drawingmachine.cli
+    drawingmachine.service
+
+[importlinter:contract:entrypoint-boundary]
+name = Entry points do not bypass concrete adapters
+type = forbidden
+source_modules =
+    drawingmachine.cli
+    drawingmachine.service
+forbidden_modules =
+    drawingmachine.adapters
+allow_indirect_imports = true
+
+[importlinter:contract:assembly-root]
+name = Concrete runtime adapters are assembled only by bootstrap
+type = protected
+protected_modules =
+    drawingmachine.adapters.filesystem
+    drawingmachine.adapters.hardware
+    drawingmachine.adapters.persistence
+    drawingmachine.adapters.system
+    drawingmachine.adapters.workers
+allowed_importers =
+    drawingmachine.bootstrap
+
+[importlinter:contract:planning-experiment-isolation]
+name = Production code does not depend on planning experiments
+type = protected
+protected_modules =
+    drawingmachine.domain.planning.experiments
+allowed_importers =
+    drawingmachine.domain.planning.experiments
+
+[importlinter:contract:provider-port-boundary]
+name = Provider ports do not depend on provider adapters
+type = forbidden
+source_modules =
+    drawingmachine.ports.providers
+forbidden_modules =
+    drawingmachine.adapters.providers

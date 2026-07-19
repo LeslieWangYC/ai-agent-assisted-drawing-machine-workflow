@@ -1,0 +1,10 @@
+{
+  "missing_g54": {
+    "legacy": "warning",
+    "package_c": "blocker"
+  },
+  "post_home_mpos": {
+    "legacy": "not_proven",
+    "package_c": "required"
+  }
+}

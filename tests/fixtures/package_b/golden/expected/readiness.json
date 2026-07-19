@@ -1,0 +1,12 @@
+{
+  "allow_stream": true,
+  "blockers": [],
+  "warnings": [],
+  "pen_motion_assessment": {
+    "pen_lift_count": 6,
+    "pen_down_count": 5,
+    "draw_path_count": 5,
+    "lift_down_delta": 1,
+    "hard_gate": false
+  }
+}

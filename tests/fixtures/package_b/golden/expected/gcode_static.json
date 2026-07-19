@@ -1,0 +1,29 @@
+{
+  "summary": {
+    "input": "<FIXTURE_ROOT>/expected/drawing.gcode",
+    "motion_command_count": 452,
+    "draw_segment_count": 436,
+    "travel_segment_count": 5,
+    "draw_length_mm": 7587.722,
+    "travel_length_mm": 158.353,
+    "draw_path_count": 5,
+    "pen_lift_count": 6,
+    "pen_down_count": 5,
+    "short_draw_path_count": 0,
+    "max_feed_seen": 1200.0,
+    "bounds": {
+      "min_x": 54.0,
+      "min_y": 53.25,
+      "max_x": 138.0,
+      "max_y": 138.75
+    },
+    "gate": "PASS_STATIC"
+  },
+  "checks": [
+    {
+      "severity": "INFO",
+      "code": "static_only",
+      "message": "Static checks only; no controller validation was performed."
+    }
+  ]
+}

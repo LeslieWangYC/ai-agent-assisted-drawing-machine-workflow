@@ -1,0 +1,25 @@
+{
+  "schema": "processed_image_normalize_report_v1",
+  "created_at": "<CAPTURED_AT>",
+  "input": "<FIXTURE_ROOT>/complex_gradient.png",
+  "output": "<FIXTURE_ROOT>/expected/normalized.png",
+  "size_px": [
+    160,
+    160
+  ],
+  "threshold": 220.0,
+  "color_delta_threshold": 10,
+  "input_colored_pixels": 19563,
+  "input_colored_ratio": 0.76417969,
+  "output_black_pixels": 15853,
+  "output_black_ratio": 0.61925781,
+  "small_components_removed": 0,
+  "small_component_pixels_removed": 0,
+  "content_bbox_px": [
+    0,
+    0,
+    159,
+    159
+  ],
+  "hardware_touched": false
+}

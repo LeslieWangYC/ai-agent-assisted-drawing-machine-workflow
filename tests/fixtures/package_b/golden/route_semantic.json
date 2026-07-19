@@ -1,0 +1,8 @@
+{
+  "semantic_style_score": 0.25,
+  "semantic_score_source": "router_multimodal_model",
+  "semantic_rationale": [
+    "clean high-contrast line art on a plain background"
+  ],
+  "semantic_blockers": []
+}
